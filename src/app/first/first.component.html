@@ -1,30 +1,30 @@
-
 <h2>Shop your groceries with us!</h2>
-<label for=groceryType>Select the grocery type you want to shop :   </label>
+<label for="groceryType">Select the grocery type you want to shop : </label>
 <select name="groceryType">
-    <option *ngFor="let gType of groceryTypes" value="gType">{{gType}}</option>
+  <option *ngFor="let gType of groceryTypes" value="gType">{{ gType }}</option>
 </select>
 <div [ngSwitch]="selectedGType">
-    <div *ngSwitchCase ="'Produce'">
-        <ul *ngIf = "freshProduce; else noProduce">
-            <li *ngFor ="let produce of freshProduce">{{produce}}</li>      
-        </ul>
-        <ng-template #noProduce>Sorry! No Fresh Produce available now.</ng-template>
-    </div>
-    <div *ngSwitchCase ="'Dairy'">
-        <ul *ngIf = "dairyEggs; else noDairy">
-            <li *ngFor="let dairy of dairyEggs">{{dairy}}</li>
-        </ul>
-        <ng-template #noDairy>No Dairy items available now.</ng-template>
-    </div>
-    <div *ngSwitchCase ="'Bakery'">
-        <ul *ngIf = "bakeryItems; else noBakery">
-            <li *ngFor="let bakery of bakeryItems">{{bakery}}</li>
-        </ul>
-        <ng-template #noBakery>No Bakery items available now.</ng-template>
-    </div>
-    <div *ngSwitchDefault>Please select a grocery type</div>
+  <div *ngSwitchCase="'Produce'">
+    <ul *ngIf="freshProduce; else noProduce">
+      <li *ngFor="let produce of freshProduce">{{ produce }}</li>
+    </ul>
+    <ng-template #noProduce>Sorry! No Fresh Produce available now.</ng-template>
+  </div>
+  <div *ngSwitchCase="'Dairy'">
+    <ul *ngIf="dairyEggs; else noDairy">
+      <li *ngFor="let dairy of dairyEggs">{{ dairy }}</li>
+    </ul>
+    <ng-template #noDairy>No Dairy items available now.</ng-template>
+  </div>
+  <div *ngSwitchCase="'Bakery'">
+    <ul *ngIf="bakeryItems; else noBakery">
+      <li *ngFor="let bakery of bakeryItems">{{ bakery }}</li>
+    </ul>
+    <ng-template #noBakery>No Bakery items available now.</ng-template>
+  </div>
+  <div *ngSwitchDefault>Please select a grocery type</div>
 </div>
-
-
-
+<span *ngFor="let gType of groceryTypes">
+  <a [routerLink]="['/shopping', gType]">{{ gType }} |</a>
+</span>
+<router-outlet></router-outlet>

@@ -8,9 +8,8 @@ describe('FirstComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FirstComponent ]
-    })
-    .compileComponents();
+      declarations: [FirstComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +20,13 @@ describe('FirstComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have default selection of groceries', () => {
+    expect(component.selectedGType).toBe('Select');
+  });
+
+  it('should load the grocerytypes', () => {
+    expect(component.groceryTypes.length).toBeGreaterThan(0);
   });
 });
